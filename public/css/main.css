@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    font-family: "Petrona", serif;
+    background-image: url(../image/news.jpg);
+}
+.navbar{
+    background: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    font-size:20px;
+    font-weight: 500;
+}
+.navbar-brand {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffffff;
+    margin-right:50px;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.1em;
+    color: #ffffff;
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: bold;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #dddddd;
+}
+
+.container {
+    margin-top: 60px;
+}
+
+aside {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size:20px;
+    font-weight: 500;
+}
+
+
+aside p {
+    font-size: 18px;
+    color: #666666;
+}
+
+section.main {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size:20px;
+    font-weight: 500;
+}
+
+
+
+section.main p {
+    font-size: 18px;
+    color: #666666;
+}
+
+footer {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
