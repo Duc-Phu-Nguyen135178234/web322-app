@@ -9,7 +9,7 @@
 *  Name: Duc Phu Nguyen
 *  Student ID: 135178234
 *  Date: June 10 2024
-*  Vercel Web App URL:
+*  Vercel Web App URL:https://web322-app-flame.vercel.app/about
 *  GitHub Repository URL: https://github.com/Duc-Phu-Nguyen135178234/web322-app
 **/
 
