@@ -10,7 +10,7 @@
 *  Student ID: 135178234
 *  Date: June 10 2024
 *  Vercel Web App URL:
-*  GitHub Repository URL: 
+*  GitHub Repository URL: https://github.com/Duc-Phu-Nguyen135178234/web322-app
 **/
 
 
