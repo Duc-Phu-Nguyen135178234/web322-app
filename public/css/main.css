@@ -33,19 +33,27 @@ body {
     margin-top: 60px;
 }
 
-aside {
-    background-color: #ffffff;
-    padding: 20px;
+.col-xl{
+    background-color: #ffffff !important;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-size:20px;
-    font-weight: 500;
 }
+
 
 
 aside p {
     font-size: 18px;
     color: #666666;
+}
+
+.col-md-3 {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size:20px;
+    font-weight: 500;
+    
 }
 
 section.main {
