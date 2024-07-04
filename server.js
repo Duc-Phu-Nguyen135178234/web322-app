@@ -9,14 +9,13 @@
 *  Name: Duc Phu Nguyen
 *  Student ID: 135178234
 *  Date: July 03 2024
-*  Vercel Web App URL:https://web322-app-flame.vercel.app/about
+*  Vercel Web App URL:https://web322-app-if5z-djpleoo3i-kevins-projects-b2072a7e.vercel.app 
 *  GitHub Repository URL: https://github.com/Duc-Phu-Nguyen135178234/web322-app
 **/
 
 
 const express = require('express');
 const path = require('path');
-const fs = require('fs');
 const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
 const streamifier = require('streamifier');
@@ -34,8 +33,6 @@ cloudinary.config({
 });
 
 const upload = multer(); // No disk storage
-// Read JSON data
-const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'items.json')));
 
 // Middleware for parsing JSON and urlencoded form data
 app.use(express.json());
@@ -44,12 +41,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 
-// Routes Home
+// [GET] / Routes Home
 app.get('/', (req, res) => {
     res.redirect('/about');
 });
 
-//Route about
+//[GET] /about route
 app.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'about.html'));
 });
@@ -87,23 +84,25 @@ app.get('/items', (req, res) => {
     }
 });
 
+
 // Route to get an item by ID http://localhost:8080/item/1
 app.get('/item/:id', (req, res) => {
     const id = parseInt(req.params.id); 
-    const entry = data.find(item => item.id === id);
-
-    if (entry) {
-        res.json(entry);
-    } else {
-        res.status(404).send({ error: 'Entry not found' });
-    }
+    storeService.getItemById(id)
+        .then(entry => {
+            res.json(entry);
+        })
+        .catch(error => {
+            res.status(404).send({ error });
+        });
 });
 
-
+//[GET] /items/add route
 app.get('/items/add', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'addItem.html'));
 });
 
+//[POST] /items/add route
 app.post('/items/add', upload.single('featureImage'), (req, res) => {
     
     if (req.file) {
@@ -136,6 +135,7 @@ app.post('/items/add', upload.single('featureImage'), (req, res) => {
     }
 });
 
+//[GET] categories route
 app.get('/categories', (req, res) => {
     storeService.getCategories().then((data) => {
         res.json(data);
@@ -147,8 +147,6 @@ app.get('/categories', (req, res) => {
 app.use((req, res) => {
     res.status(404).send("Page Not Found");
 });
-
-
 
 
 storeService.initialize().then(() => {
