@@ -42,15 +42,14 @@ module.exports.getAllItems = () => {
 // Get published items
 module.exports.getPublishedItems = () => {
     return new Promise((resolve, reject) => {
-        const publishedItems = items.filter(item => item.published); // Filter items to include only published = true
+        const publishedItems = items.filter(item => item.published);
         if (publishedItems.length > 0) {
-            resolve(publishedItems); 
+            resolve(publishedItems);
         } else {
-            reject("no results returned"); 
+            reject("no results returned");
         }
     });
 };
-
 // Get all categories
 module.exports.getCategories = () => {
     return new Promise((resolve, reject) => {
@@ -61,8 +60,6 @@ module.exports.getCategories = () => {
         }
     });
 };
-
-
 
 // Add a new item
 module.exports.addItem = (itemData) => {
@@ -79,6 +76,9 @@ module.exports.addItem = (itemData) => {
         // Check if the published property is defined, otherwise default it to false
         itemData.published = itemData.published === true;
 
+        // Set the post date to current date
+        itemData.postDate = new Date().toISOString().split('T')[0]; // Set the current date
+
         // Add the new item to the array
         items.push(itemData);
 
@@ -93,22 +93,20 @@ module.exports.addItem = (itemData) => {
     });
 };
 
-//search items by category // http://localhost:8080/items?category=1
+// Search items by category
 module.exports.getItemsByCategory = (category) => {
     return new Promise((resolve, reject) => {
-        //convert to number make sure category is number
-        const number = parseInt(category);
-        
-        const newarray = items.filter(item => item.category === number);
-        if (newarray.length > 0) {
-            resolve(newarray);
+        const number = parseInt(category); // Convert to number to ensure category is a number
+        const filteredItems = items.filter(item => item.category === number);
+        if (filteredItems.length > 0) {
+            resolve(filteredItems);
         } else {
             reject("No items found for category: " + category);
         }
     });
 };
 
-//search item by Date /http://localhost:8080/items?minDate=2023-05-20
+// Search item by Date
 module.exports.getItemsByMinDate = (minDateStr) => {
     return new Promise((resolve, reject) => {
         const minDate = new Date(minDateStr);
@@ -121,14 +119,28 @@ module.exports.getItemsByMinDate = (minDateStr) => {
     });
 };
 
-// Route to get an item by ID http://localhost:8080/item/1
+// Route to get an item by ID
 module.exports.getItemById = (id) => {
     return new Promise((resolve, reject) => {
-        const newarray = items.find(item => item.id.toString() === id.toString());
-        if (newarray) {
-            resolve(newarray);
+        const item = items.find(item => item.id.toString() === id.toString());
+        if (item) {
+            resolve(item);
         } else {
             reject("No item found with ID: " + id);
         }
     });
 };
+
+// Get published items by category
+module.exports.getPublishedItemsByCategory = (category) => {
+    return new Promise((resolve, reject) => {
+        const number = parseInt(category); // Convert to number to ensure category is a number
+        const publishedItems = items.filter(item => item.published && item.category === number);
+        if (publishedItems.length > 0) {
+            resolve(publishedItems);
+        } else {
+            reject("No published items found for category: " + category);
+        }
+    });
+};
+
