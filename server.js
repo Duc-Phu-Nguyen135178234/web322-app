@@ -107,7 +107,7 @@ app.get("/shop", async (req, res) => {
         } else {
             items = await storeService.getPublishedItems();
         }
-        //items.sort((a, b) => new Date(b.postDate) - new Date(a.postDate));
+       
         let item = items[0];
 
         viewData.items = items;
