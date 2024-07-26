@@ -29,15 +29,14 @@ body {
     color: #dddddd;
 }
 
-.container {
-    margin-top: 60px;
-}
-
-.col-xl{
+.form {
     background-color: #ffffff !important;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+    
+} 
+
+
 
 
 
