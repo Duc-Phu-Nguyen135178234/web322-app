@@ -8,8 +8,8 @@
 *  fail the entire course.
 *  Name: Duc Phu Nguyen
 *  Student ID: 135178234
-*  Date: July 29 2024
-*  Vercel Web App URL:https://vercel.com/kevins-projects-b2072a7e/web322-assignment4/79Nv8mJvgj1kYYfXz75eWqHqRM2g
+*  Date: July 27 2024
+*  Vercel Web App URL:https://web322-app-brown.vercel.app/about
 *  GitHub Repository URL: https://github.com/Duc-Phu-Nguyen135178234/web322-app
 **/
 

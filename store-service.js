@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize('database', 'database_owner', '20yDwnRuEVSi', {
     host: 'ep-dark-truth-a5sqml8z-pooler.us-east-2.aws.neon.tech',
-    dialectModule: require('pg'),
-    dialect: 'postgres',
+    dialectModule: require('pg'), // vercel require this line of code to require pg deploy
+    dialect: 'postgres', 
     port: 5432,
     dialectOptions: {
         ssl: { rejectUnauthorized: false }
@@ -10,13 +10,6 @@ const sequelize = new Sequelize('database', 'database_owner', '20yDwnRuEVSi', {
     query: { raw: true }
 });
 
-
-// const fs = require('fs'); // Import the fs module to work with the file system
-// const path = require('path');
-
-// const itemsFilePath = path.join(__dirname, 'data', 'items.json');
-// const categoriesFilePath = path.join(__dirname, 'data', 'categories.json');
-//Define the Item and Category models
 
 
 const Item = sequelize.define('Item', {
