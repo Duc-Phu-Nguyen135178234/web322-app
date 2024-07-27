@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const sequelize = new Sequelize('database', 'database_owner', '20yDwnRuEVSi', {
     host: 'ep-dark-truth-a5sqml8z-pooler.us-east-2.aws.neon.tech',
     dialectModule: require('pg'),
-    //dialect: 'postgres',
+    dialect: 'postgres',
     port: 5432,
     dialectOptions: {
         ssl: { rejectUnauthorized: false }
