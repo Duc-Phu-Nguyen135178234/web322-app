@@ -1,6 +1,6 @@
 
 /**
-*  WEB322 - Assignment 05
+*  WEB322 - Assignment 06
 *  I declare that this assignment is my own work in accordance with Seneca Academic Policy. 
 *  No part of this assignment has been copied manually or electronically from any other source
 *  (including web sites, friends gpt or otherwise) or distributed to other students.
@@ -8,7 +8,7 @@
 *  fail the entire course.
 *  Name: Duc Phu Nguyen
 *  Student ID: 135178234
-*  Date: July 27 2024
+*  Date: August 08 2024
 *  Vercel Web App URL:https://web322-app-brown.vercel.app/about
 *  GitHub Repository URL: https://github.com/Duc-Phu-Nguyen135178234/web322-app
 **/
@@ -40,7 +40,7 @@ cloudinary.config({
 
 app.use(clientSessions({
     cookieName: "session",
-    secret: "yourSecretKeyHere",
+    secret: "aklxNDKOXe+Zp+KusaYARGs8xrkZKDBy4A5twWH4IXw=",//123sdasdafds213dsdfd
     duration: 2 * 60 * 60 * 1000, // 2 hours
     activeDuration: 1000 * 60 * 60 // 1 hour
 }));
@@ -59,9 +59,6 @@ function ensureLogin(req, res, next) {
 }
 
 //end client sessions
-
-
-
 
 const upload = multer(); // No disk storage
 
@@ -121,10 +118,13 @@ app.get('/login', (req, res) => {
     res.render('login');
 });
 
+
+//[GET] route
 app.get('/register', (req, res) => {
     res.render('register');
 });
 
+//[POST] register
 app.post('/register', (req, res) => {
     authData.registerUser(req.body).then(() => {
         res.render('register', { successMessage: "User created" });
@@ -133,6 +133,7 @@ app.post('/register', (req, res) => {
     });
 });
 
+//[POST] login 
 app.post('/login', (req, res) => {
     req.body.userAgent = req.get('User-Agent');
     authData.checkUser(req.body).then(user => {
@@ -158,9 +159,6 @@ app.get('/userHistory', ensureLogin, (req, res) => {
 
 
 //end login route 
-
-
-
 
 
 
@@ -248,6 +246,7 @@ app.get('/shop/:id', async (req, res) => {
 });
 
 //[GET] Route items /items?category=1 /items?minDate=2023-01-01
+// shop and about do not to run to middleware . However Item and catergory must go to middleware first to check user permission ensureLogin
 app.get('/items',ensureLogin, async (req, res) => {
     try {
         let items = [];
@@ -390,11 +389,4 @@ storeService.initialize()
         console.log(`Failed to start server: ${err}`);
     });
 
-// storeService.initialize().then(() => {
-//     app.listen(PORT, () => {
-//         console.log(`Express http server listening on port ${PORT}`);
-//     });
-// }).catch((err) => {
-//     console.log(`Failed to start server: ${err}`);
-// });
 

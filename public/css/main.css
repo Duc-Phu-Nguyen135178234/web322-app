@@ -93,6 +93,16 @@ footer p {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.row input{
+    margin-bottom: 20px;
+}
+.row .register,.login{
+    text-align: right;
+}
+
+.row .addCategory{
+    text-align: center;
+}
 .w-50{
     background-color: #fff;
 }

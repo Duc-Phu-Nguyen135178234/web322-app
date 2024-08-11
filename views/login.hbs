@@ -1,11 +1,14 @@
-<h2>Login</h2>
+
 {{#if errorMessage}}
 <div class="alert alert-danger">
     <strong>Error:</strong> {{errorMessage}}
 </div>
 {{/if}}
-<form method="post" action="/login">
+<form method="post" action="/login" class="row">
+<h2>Login</h2>
     <input type="text" name="userName" placeholder="User Name" required value="{{userName}}" />
     <input type="password" name="password" placeholder="Password" required />
-    <button type="submit">Login</button>
+     <div class="login">
+        <button type="submit" class="btn btn-primary">Login</button>
+    </div>
 </form>
